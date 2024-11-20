@@ -20,7 +20,25 @@ public class As1_Crop {
         return name + " " + yield + " " + units + " " + price + " " + acres;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void setAcres(int acres) {
         this.acres = acres;
     }
+    public void addAcres(int acres){
+        this.acres = this.acres + acres;
+    }
+    public void printMe(){
+        System.out.println("Crop: " + name + ", Amount yield: " + yield + " " + units + ", Price: " + price + ", Amount of Acres: " + acres);
+    }
+
+    public double harvest(){
+       double total = this.price * this.yield * this.acres;
+        System.out.println("Harvest value:  $" + total);
+        this.acres = 0;
+        return total;
+    }
+
 }
