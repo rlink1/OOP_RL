@@ -60,20 +60,23 @@ public class As1_Main {
             } else if (choice == 4) {
                 System.out.println("Please enter the name of a crop");
                 String cropSearch = Library.input.nextLine();
-                System.out.println("How much acres (whole number) of this crop do you want to add?");
+                System.out.println("How much acres (whole number) of this crop do you want to plant?");
                 int cropAdd = Library.input.nextInt();
                 Library.input.nextLine();
                 int foundIndex = searchByName(allCrops, cropSearch);
                 if(foundIndex > -1){
-                    allCrops.get(foundIndex).printMe();
-                    System.out.println("Would you like to harvest this crop?");
-                    String yorn = Library.input.nextLine();
-                    if(yorn.contains("y")){
-                        totalValue = totalValue + allCrops.get(foundIndex).harvest();
-                    }
+                    allCrops.get(foundIndex).addAcres(cropAdd);
+
                 }
                 else{
-                    System.out.println("Not found, please try again");
+                    System.out.println("Planting " + cropSearch);
+                    System.out.println("How much yield does " + cropSearch + " (double) have?");
+                    double tempy = Library.input.nextDouble();
+                    Library.input.nextLine();
+                    System.out.println("How much can you buy " + cropSearch + " (double) for 1 bu/acre?");
+                    double tempp = Library.input.nextDouble();
+
+                    allCrops.add(new As1_Crop(cropSearch, tempy, "bu/acre", tempp, cropAdd));
                 }
             } else if (choice == 5) {
                 break;

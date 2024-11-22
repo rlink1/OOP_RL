@@ -18,6 +18,13 @@ public class Ex3_Client {
         outstandingFees = 0;
     }//constructor
 
+    public Ex3_Client(String n, String a, int l, boolean d, double f){
+        name = n;
+        address = a;
+        lawnSize = l;
+        hasDog = d;
+        outstandingFees = f;
+    }//constructor
     public String toString(){
         return name + " " + address + " " + lawnSize + " " + hasDog + " " + outstandingFees;
     }
@@ -58,7 +65,7 @@ public class Ex3_Client {
         System.out.println(name + " you currently owe $" + outstandingFees);
     }
 
-    public void deliquent(){
+    public void delinquent(){
         double interest = 5 + outstandingFees * 0.1;
         System.out.println(name + " your payment is overdue, you've been charged interest of " + interest);
         outstandingFees += interest;

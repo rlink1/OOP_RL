@@ -16,6 +16,13 @@ public class As1_Crop {
         price = p;
         acres = 0;
     }
+    public As1_Crop(String n, double y, String u, double p, int a) {
+        name = n;
+        yield = y;
+        units = u;
+        price = p;
+        acres = a;
+    }
     public String toString(){
         return name + " " + yield + " " + units + " " + price + " " + acres;
     }
