@@ -70,9 +70,13 @@ public class As1_Main {
                 }
                 else{
                     System.out.println("Planting " + cropSearch);
+
+
                     System.out.println("How much yield does " + cropSearch + " (double) have?");
                     double tempy = Library.input.nextDouble();
                     Library.input.nextLine();
+
+
                     System.out.println("How much can you buy " + cropSearch + " (double) for 1 bu/acre?");
                     double tempp = Library.input.nextDouble();
 
