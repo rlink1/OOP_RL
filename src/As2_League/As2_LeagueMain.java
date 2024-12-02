@@ -1,6 +1,7 @@
 package As2_League;
 
 import Examples.Ex3_Client;
+import Examples.Library;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -10,6 +11,72 @@ public class As2_LeagueMain {
         ArrayList<As2_Team> allTeams = new ArrayList<>();
 
         loadFile("data/Teams_ClientData.csv", allTeams);
+
+        System.out.println("TEAMS");
+        while (true) {
+            System.out.println();
+            System.out.println("What would you like to do?");
+            System.out.println("1.  Print all Teams");
+            System.out.println("2.  Find Averages");
+            System.out.println("3.  View age groups");
+            System.out.println("4.  Sort by number of tournaments played");
+            System.out.println("5.  Update Stats");
+            System.out.println("6.  Exit and Save");
+
+            int choice = Library.input.nextInt();
+            Library.input.nextLine();
+            if (choice == 1) {
+
+                for (int i = 0; i < allTeams.size(); i++) {
+                    allTeams.get(i).printMe();
+                }
+
+            } else if (choice == 2) {
+                double avgavgAge = 0;
+                double avgTourneys = 0;
+                double avgMoney = 0;
+
+
+                for (int i = 0; i < allTeams.size(); i++) {
+                    avgavgAge = allTeams.get(i).getAvgAge() + avgavgAge;
+                    avgTourneys = allTeams.get(i).getNumTourneys() + avgTourneys;
+                    avgMoney = allTeams.get(i).getTotalMoney() + avgMoney;
+                }
+                System.out.println("Average age range: " + (avgavgAge/ allTeams.size()) + "\nAverage number of Tournaments Played: " + (avgTourneys/ allTeams.size()) + "\nAverage amount of winning money per team: " + (avgMoney/ allTeams.size()));
+
+            } else if (choice == 3) {
+                System.out.println("View age range\nWhat age range are you looking for?");
+                Boolean check = false;
+
+
+                int searchTerm = Library.input.nextInt();
+                Library.input.nextLine();
+
+
+                for (int i = 0; i < allTeams.size(); i++) {
+                    if(allTeams.get(i).getAvgAge() == searchTerm){
+                        check = true;
+                        allTeams.get(i).printMe();
+                    }
+
+                }
+                if(check == false){
+                    System.out.println("No age range found, please try again");
+                }
+
+
+
+            } else if (choice == 4) {
+
+            } else if (choice == 5) {
+
+
+            } else {
+                saveFile("data/Teams_ClientData.csv", allTeams);
+                break;
+            }
+        } // while
+        System.out.println("There is no use teamin as there is no team like teams teaming.  \nGood bye.");
 
     }
 
@@ -35,18 +102,19 @@ public class As2_LeagueMain {
         }
     }//end loadFile
 
-    public static void saveFile(String filename, ArrayList <Ex3_Client> tempList ) {
+    public static void saveFile(String filename, ArrayList <As2_Team> tempList ) {
         try {
             PrintWriter file = new PrintWriter(new FileWriter(filename));
 
             for (int i = 0; i < tempList.size(); i++) {
 //the next lines are customized for whatever data you are getting.
                 String toSave ="";
-                toSave = tempList.get(i).getName();  //assumes getter method are used for private variables
-                toSave +="," + tempList.get(i).getAddress();
-                toSave += "," + tempList.get(i).getLawnSize();
-                toSave +="," + tempList.get(i).getHasDog();
-                toSave +="," + tempList.get(i).getOutstandingFees();
+                toSave = tempList.get(i).getNickname();  //assumes getter method are used for private variables
+                toSave +="," + tempList.get(i).getCity();
+                toSave += "," + tempList.get(i).getAvgAge();
+                toSave +="," + tempList.get(i).getNumTourneys();
+                toSave +="," + tempList.get(i).getHasWon();
+                toSave +="," + tempList.get(i).getTotalMoney();
 
 //The above 6 lines could be replaced by a call to a carefully made toString() function
 
@@ -60,4 +128,5 @@ public class As2_LeagueMain {
         }
 
     }//end saveFile
+
 }

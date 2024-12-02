@@ -22,5 +22,33 @@ public class As2_Team {
         hasWon = w;
         totalMoney = m;
     }
+        public void printMe(){
+            System.out.println("Team Name: " + this.nickname + ", City/Country: " + this.city + ", Average Age: " + this.avgAge + ", Number of Tournaments " + this.numTourneys + ", Has won: " +this.hasWon + ", Total Winning earnings: " +this.totalMoney);
+        }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public int getAvgAge() {
+        return avgAge;
+    }
+
+    public int getNumTourneys() {
+        return numTourneys;
+    }
+
+    public Boolean getHasWon() {
+        return hasWon;
+    }
+
+    public double getTotalMoney() {
+        return totalMoney;
+    }
+
 
 }
