@@ -1,5 +1,6 @@
 package As2_League;
 
+import As1_Crops.As1_Crop;
 import Examples.Ex3_Client;
 import Examples.Library;
 
@@ -19,7 +20,7 @@ public class As2_LeagueMain {
             System.out.println("1.  Print all Teams");
             System.out.println("2.  Find Averages");
             System.out.println("3.  View age groups");
-            System.out.println("4.  Sort by number of tournaments played");
+            System.out.println("4.  Sort by lowest winnings to highest");
             System.out.println("5.  Update Stats");
             System.out.println("6.  Exit and Save");
 
@@ -42,7 +43,7 @@ public class As2_LeagueMain {
                     avgTourneys = allTeams.get(i).getNumTourneys() + avgTourneys;
                     avgMoney = allTeams.get(i).getTotalMoney() + avgMoney;
                 }
-                System.out.println("Average age range: " + (avgavgAge/ allTeams.size()) + "\nAverage number of Tournaments Played: " + (avgTourneys/ allTeams.size()) + "\nAverage amount of winning money per team: " + (avgMoney/ allTeams.size()));
+                System.out.println("Average age range: " + (avgavgAge/allTeams.size()) + "\nAverage number of Tournaments Played: " + (avgTourneys/ allTeams.size()) + "\nAverage amount of winning money per team: " + (avgMoney/ allTeams.size()));
 
             } else if (choice == 3) {
                 System.out.println("View age range\nWhat age range are you looking for?");
@@ -62,13 +63,27 @@ public class As2_LeagueMain {
                 }
                 if(check == false){
                     System.out.println("No age range found, please try again");
+
                 }
 
-
-
             } else if (choice == 4) {
+                System.out.println("\nSort by Won earning:\n");
+            sortByEarnings(allTeams);
 
             } else if (choice == 5) {
+                System.out.println("Enter the name of the team you would like to update stats for");
+                String searchFun = Library.input.nextLine();
+                int foundIndex = searchByName(allTeams, searchFun);
+                if(foundIndex > -1){
+                    System.out.println("Updating " + searchFun);
+
+
+                }else{
+                    System.out.println("Adding " + searchFun + "\n\nWhere is " + searchFun + " located?");
+                    String tempLoc = Library.input.nextLine();
+
+                }
+
 
 
             } else {
@@ -128,5 +143,34 @@ public class As2_LeagueMain {
         }
 
     }//end saveFile
+
+    public static void sortByEarnings(ArrayList<As2_Team> list) {
+
+
+        for(int i=0; i<list.size()-1; i++){
+            int lowestIndex = i;
+            for(int j=i+1; j< list.size(); j++){
+                if(list.get(j).getTotalMoney() < list.get(lowestIndex).getTotalMoney()){
+                    lowestIndex = j;
+                }
+            }
+            //swap the data
+            As2_Team temp = list.get(i);
+            list.set(i, list.get(lowestIndex) );
+            list.set(lowestIndex, temp);
+
+        }
+
+    }
+
+    public static int searchByName(ArrayList<As2_Team> list, String searchTerm ){
+        for (int i = 0; i < list.size(); i++) {
+            if(searchTerm.equalsIgnoreCase( list.get(i).getNickname() )){
+                return i;
+            }
+        }
+        return -1;
+    }
+
 
 }
