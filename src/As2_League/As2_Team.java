@@ -50,5 +50,22 @@ public class As2_Team {
         return totalMoney;
     }
 
+    public void setCity(String city) {
+        this.city = city;
+    }
 
+    public void setAvgAge(int avgAge) {
+        this.avgAge = avgAge;
+    }
+
+    public void setNumTourneys(int numTourneys) {
+        this.numTourneys += numTourneys;
+    }
+
+    public void setHasWon(Boolean hasWon) {
+        this.hasWon = hasWon;
+    }
+    public void setTotalMoney(double totalMoney) {
+        this.totalMoney += totalMoney;
+    }
 }

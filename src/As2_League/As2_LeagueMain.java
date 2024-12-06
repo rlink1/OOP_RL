@@ -75,19 +75,77 @@ public class As2_LeagueMain {
                 String searchFun = Library.input.nextLine();
                 int foundIndex = searchByName(allTeams, searchFun);
                 if(foundIndex > -1){
-                    System.out.println("Updating " + searchFun);
 
+                    System.out.println("Updating " + searchFun + ":\n");
+                    System.out.println("Did they change locations?");
+                    String temp1 = Library.input.nextLine();
+                    if(temp1.startsWith("y")){
+                        System.out.println("What is their new location?");
+                        String tempLoc = Library.input.nextLine();
+                        allTeams.get(foundIndex).setCity(tempLoc);
+                    }
+
+                    System.out.println("Did they play in any more tournaments?");
+                    String temp2 = Library.input.nextLine();
+                    if(temp2.startsWith("y")){
+                        System.out.println("How many more tournaments did they play in?");
+                        int tempTourn = Library.input.nextInt();
+                        Library.input.nextLine();
+                        allTeams.get(foundIndex).setNumTourneys(tempTourn);
+                    }
+
+                    System.out.println("Did they win any tournaments?");
+                    String temp3 = Library.input.nextLine();
+                    if(temp3.startsWith("y")){
+                        allTeams.get(foundIndex).setHasWon(true);
+                    }
+
+                    System.out.println("Did they win any more money?");
+                    String temp4 = Library.input.nextLine();
+                    if(temp4.startsWith("y")){
+                        System.out.println("How much money have they won?");
+                        double tempWins = Library.input.nextDouble();
+                        Library.input.nextLine();
+                        allTeams.get(foundIndex).setTotalMoney(tempWins);
+                    }
 
                 }else{
+                    Boolean tempWon = false;
+
                     System.out.println("Adding " + searchFun + "\n\nWhere is " + searchFun + " located?");
                     String tempLoc = Library.input.nextLine();
+
+                    System.out.println("What is the average age range of " + searchFun + "?");
+                    int tempAge = Library.input.nextInt();
+                    Library.input.nextLine();
+
+                    System.out.println("How many tournaments has " + searchFun + " played in?");
+                    int tempTourn = Library.input.nextInt();
+                    Library.input.nextLine();
+
+                    System.out.println("Has " + searchFun + " won any of these tournaments?");
+                    String tempCheck = Library.input.nextLine();
+                    if(tempCheck.startsWith("y")){
+                        tempWon = true;
+                    }
+
+                    System.out.println("How much money has " + searchFun + " won?");
+                    double tempMoney = Library.input.nextDouble();
+                    Library.input.nextLine();
+
+                    allTeams.add( new As2_Team(searchFun, tempLoc, tempAge, tempTourn, tempWon, tempMoney));
 
                 }
 
 
 
             } else {
-                saveFile("data/Teams_ClientData.csv", allTeams);
+                boolean check = false;
+                System.out.println("Would you like to save?");
+                String temp = Library.input.nextLine();
+                if(temp.startsWith("y")){
+                    saveFile("data/Teams_ClientData.csv", allTeams);
+                }
                 break;
             }
         } // while
