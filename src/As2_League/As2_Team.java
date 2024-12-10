@@ -1,5 +1,6 @@
 package As2_League;
 
+import As3_Players.As3_Stats;
 import Examples.Ex3_Client;
 
 import java.io.*;
@@ -21,6 +22,8 @@ public class As2_Team {
         numTourneys = t;
         hasWon = w;
         totalMoney = m;
+
+        ArrayList<As3_Stats> allPlayers = new ArrayList<>();
     }
         public void printMe(){
             System.out.println("Team Name: " + this.nickname + ", City/Country: " + this.city + ", Average Age: " + this.avgAge + ", Number of Tournaments " + this.numTourneys + ", Has won: " +this.hasWon + ", Total Winning earnings: " +this.totalMoney);
