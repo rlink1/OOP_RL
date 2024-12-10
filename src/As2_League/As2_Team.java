@@ -1,9 +1,5 @@
 package As2_League;
 
-import As3_Players.As3_Stats;
-import Examples.Ex3_Client;
-
-import java.io.*;
 import java.util.ArrayList;
 
 public class As2_Team {
@@ -15,6 +11,8 @@ public class As2_Team {
     private Boolean hasWon;
     private double totalMoney;
 
+    private String newName;
+
     public As2_Team(String n, String c, int a, int t, Boolean w, double m){
         nickname = n;
         city = c;
@@ -23,8 +21,23 @@ public class As2_Team {
         hasWon = w;
         totalMoney = m;
 
-        ArrayList<As3_Stats> allPlayers = new ArrayList<>();
+        ArrayList<As3_Players> allPlayers = new ArrayList<>();
     }
+
+    public As2_Team(String n, String c, int a, int t, Boolean w, double m, String nn){
+        nickname = n;
+        city = c;
+        avgAge = a;
+        numTourneys = t;
+        hasWon = w;
+        totalMoney = m;
+
+
+
+        ArrayList<As3_Players> allPlayers = new ArrayList<>();
+    }
+
+
         public void printMe(){
             System.out.println("Team Name: " + this.nickname + ", City/Country: " + this.city + ", Average Age: " + this.avgAge + ", Number of Tournaments " + this.numTourneys + ", Has won: " +this.hasWon + ", Total Winning earnings: " +this.totalMoney);
         }
@@ -70,5 +83,9 @@ public class As2_Team {
     }
     public void setTotalMoney(double totalMoney) {
         this.totalMoney += totalMoney;
+    }
+
+    public void newPlayer(String n, String p, int a, double w){
+
     }
 }

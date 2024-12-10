@@ -13,6 +13,36 @@ public class As2_LeagueMain {
 
         loadFile("data/Teams_ClientData.csv", allTeams);
 
+        for (int i = 0; i < allTeams.size(); i++) {
+            if(allTeams.get(i).getNickname().equalsIgnoreCase("Team Falcons") ){
+
+            }
+            else if(allTeams.get(i).getNickname().equalsIgnoreCase("Dignitas")){
+
+            }
+            else if(allTeams.get(i).getNickname().equalsIgnoreCase()){
+
+            }
+            else if(allTeams.get(i).getNickname().equalsIgnoreCase()){
+
+            }
+            else if(allTeams.get(i).getNickname().equalsIgnoreCase()){
+
+            }
+            else if(allTeams.get(i).getNickname().equalsIgnoreCase()){
+
+            }
+            else if(allTeams.get(i).getNickname().equalsIgnoreCase()){
+
+            }
+            else if(allTeams.get(i).getNickname().equalsIgnoreCase()){
+
+            }
+            else if(allTeams.get(i).getNickname().equalsIgnoreCase()){
+
+            }
+        }
+
         System.out.println("TEAMS");
         while (true) {
             System.out.println();

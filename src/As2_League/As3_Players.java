@@ -1,6 +1,6 @@
-package As3_Players;
+package As2_League;
 
-public class As3_Stats {
+public class As3_Players {
 
 
     private String name;
@@ -8,7 +8,7 @@ public class As3_Stats {
     private int age;
     private double winnings;
 
-    public As3_Stats(String n, String p, int a, double w){
+    public As3_Players(String n, String p, int a, double w){
         this.name = n;
         this.playername = p;
         this.age = a;
