@@ -9,10 +9,10 @@ public class As3_Players {
     private double winnings;
 
     public As3_Players(String n, String p, int a, double w){
-        this.name = n;
-        this.playername = p;
-        this.age = a;
-        this.winnings = w;
+        name = n;
+        playername = p;
+        age = a;
+        winnings = w;
     }
 
     public String toString(){

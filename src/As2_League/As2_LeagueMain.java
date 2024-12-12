@@ -14,31 +14,57 @@ public class As2_LeagueMain {
         loadFile("data/Teams_ClientData.csv", allTeams);
 
         for (int i = 0; i < allTeams.size(); i++) {
-            if(allTeams.get(i).getNickname().equalsIgnoreCase("Team Falcons") ){
+            if(allTeams.get(i).getOgName().equalsIgnoreCase("Team Falcons") ){
+                allTeams.get(i).newPlayer("Peter Kata", "Peterbot", 17, 643724);
+                allTeams.get(i).newPlayer("Fahad Almutairi", "FHD", 20, 0);
+                allTeams.get(i).newPlayer("Tai Starčič", "TaySon", 20, 1209389);
+                allTeams.get(i).newPlayer("Abdullah Albaqami", "GntL", 22, 137460);
+                allTeams.get(i).newPlayer("Faisal Almusharraf", "Yonx", 20, 83700);
 
             }
-            else if(allTeams.get(i).getNickname().equalsIgnoreCase("Dignitas")){
+            else if(allTeams.get(i).getOgName().equalsIgnoreCase("Dignitas")){
+                allTeams.get(i).newPlayer("Abdullah Akhras", "Acron", 20, 684427);
+                allTeams.get(i).newPlayer("Cooper Smith", "Cooper", 17, 0);
+            }
+            else if(allTeams.get(i).getOgName().equalsIgnoreCase("Twisted Minds")){
+                allTeams.get(i).newPlayer("Aleksa Cvetkovic", "Queasy", 22, 1195845);
+                allTeams.get(i).newPlayer("Hamad Almutairi", "Rapit", 21, 61375);
+                allTeams.get(i).newPlayer("Salman", "Arrow", 21, 0);
 
             }
-            else if(allTeams.get(i).getNickname().equalsIgnoreCase()){
+            else if(allTeams.get(i).getOgName().equalsIgnoreCase("Team Liquid")){
+                allTeams.get(i).newPlayer("Edcarlos Santos", "EdRoadToGlory", 19, 143525);
+                allTeams.get(i).newPlayer("Thales Henrique", "Pulga", 0, 48625);
 
             }
-            else if(allTeams.get(i).getNickname().equalsIgnoreCase()){
+            else if(allTeams.get(i).getOgName().equalsIgnoreCase("Guild Esports")){
+                allTeams.get(i).newPlayer("Henrik Mclean", "Hen", 19, 740947);
+                allTeams.get(i).newPlayer("Błazej Surmacz", "Blacha", 19, 96103);
 
             }
-            else if(allTeams.get(i).getNickname().equalsIgnoreCase()){
+            else if(allTeams.get(i).getOgName().equalsIgnoreCase("Solary")){
+                allTeams.get(i).newPlayer("Naël A.", "Artskill", 18, 30050);
+                allTeams.get(i).newPlayer("Manoël Da Costa", "Floki", 21, 0);
 
             }
-            else if(allTeams.get(i).getNickname().equalsIgnoreCase()){
+            else if(allTeams.get(i).getOgName().equalsIgnoreCase("PWR")){
+                allTeams.get(i).newPlayer("Austin King", "Worthy", 21, 138712);
+                allTeams.get(i).newPlayer("Sebastian", "Looter", 20, 98911);
 
             }
-            else if(allTeams.get(i).getNickname().equalsIgnoreCase()){
+            else if(allTeams.get(i).getOgName().equalsIgnoreCase("Wave Esports")){
+                allTeams.get(i).newPlayer("Ludwig Kainz", "Luuu", 34, 34123);
+                allTeams.get(i).newPlayer("Francisco Oliveira", "Kikoo", 18, 31860);
 
             }
-            else if(allTeams.get(i).getNickname().equalsIgnoreCase()){
+            else if(allTeams.get(i).getOgName().equalsIgnoreCase("Agent Gaming")){
+                allTeams.get(i).newPlayer("Logan Eschenburg", "Bucke", 21, 251786);
+                allTeams.get(i).newPlayer("Evan Barron", "Cented", 23, 495409);
 
             }
-            else if(allTeams.get(i).getNickname().equalsIgnoreCase()){
+            else if(allTeams.get(i).getOgName().equalsIgnoreCase("GameWith")){
+                allTeams.get(i).newPlayer("unknown", "Chocoluv", 21, 300);
+                allTeams.get(i).newPlayer("unknown", "Albedo", 19, 60385);
 
             }
         }
@@ -52,7 +78,9 @@ public class As2_LeagueMain {
             System.out.println("3.  View age groups");
             System.out.println("4.  Sort by lowest winnings to highest");
             System.out.println("5.  Update Stats");
-            System.out.println("6.  Exit and Save");
+            System.out.println("6.  Print Players");
+            System.out.println("7.  Update Players");
+            System.out.println("8.  Exit and Save");
 
             int choice = Library.input.nextInt();
             Library.input.nextLine();
@@ -169,6 +197,71 @@ public class As2_LeagueMain {
 
 
 
+            } else if (choice == 6) {
+                for (int i = 0; i < allTeams.size(); i++) {
+                    allTeams.get(i).printPlayers();
+                }
+
+            } else if (choice == 7) {
+
+                System.out.println("Enter the nickname (username) of the player you would like to update stats for");
+                String searchFun = Library.input.nextLine();
+                int foundIndex = -1;
+                int mainint = -1;
+                while(foundIndex == -1){
+
+                    for (int i = 0; i < allTeams.size(); i++) {
+                        foundIndex = searchByName1(allTeams.get(i).getPlayers(), searchFun);
+                        if(foundIndex > -1){
+                            mainint = i;
+                            break;
+                        }
+                    }
+                    break;
+
+                }
+                if(foundIndex > -1){
+
+                    System.out.println("Updating " + searchFun + ":\n");
+                    System.out.println("Did they change their real name?");
+                    String temp1 = Library.input.nextLine();
+                    if(temp1.startsWith("y")){
+                        System.out.println("What is their new name?");
+                        String tempName = Library.input.nextLine();
+                        allTeams.get(mainint).getPlayers().get(foundIndex).setName(tempName);
+                    }
+
+                    System.out.println("Did they change their username?");
+                    String temp2 = Library.input.nextLine();
+                    if(temp2.startsWith("y")){
+                        System.out.println("What is their new username??");
+                        String tempNick = Library.input.nextLine();
+                        allTeams.get(mainint).getPlayers().get(foundIndex).setPlayername(tempNick);
+                    }
+
+                    System.out.println("Would you like to change their age?");
+                    String temp3 = Library.input.nextLine();
+                    if(temp3.startsWith("y")){
+                        System.out.println("What is their new age??");
+                        int tempAge = Library.input.nextInt();
+                        Library.input.nextLine();
+                        allTeams.get(mainint).getPlayers().get(foundIndex).setAge(tempAge);
+                    }
+
+                    System.out.println("Did they win any more money?");
+                    String temp4 = Library.input.nextLine();
+                    if(temp4.startsWith("y")){
+                        System.out.println("How much money have they won?");
+                        double tempWins = Library.input.nextDouble();
+                        Library.input.nextLine();
+                        allTeams.get(mainint).getPlayers().get(foundIndex).addWinnings(tempWins);
+                    }
+
+                }else{
+                    System.out.println("Invalid player name. Please try again.");
+                }
+
+
             } else {
                 boolean check = false;
                 System.out.println("Would you like to save?");
@@ -196,7 +289,7 @@ public class As2_LeagueMain {
 //the next line is customized for whatever class you are creating.
 //Here we create a new STUDENT so there are 5 variables
 //Unfortunately, you need to Parse any variable that is not a String.  Integers, doubles and booleans are all demonstrated below.
-                list.add( new As2_Team(  tempArray[0],tempArray[1], Integer.parseInt(tempArray[2]), Integer.parseInt(tempArray[3]),Boolean.parseBoolean(tempArray[4]), Double.parseDouble(tempArray[5])   ));
+                list.add( new As2_Team(  tempArray[0],tempArray[1], Integer.parseInt(tempArray[2]), Integer.parseInt(tempArray[3]),Boolean.parseBoolean(tempArray[4]), Double.parseDouble(tempArray[5]), tempArray[6]   ));
 
             }
         }
@@ -254,6 +347,15 @@ public class As2_LeagueMain {
     public static int searchByName(ArrayList<As2_Team> list, String searchTerm ){
         for (int i = 0; i < list.size(); i++) {
             if(searchTerm.equalsIgnoreCase( list.get(i).getNickname() )){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static int searchByName1(ArrayList<As3_Players> list, String searchTerm ){
+        for (int i = 0; i < list.size(); i++) {
+            if(searchTerm.equalsIgnoreCase( list.get(i).getPlayername() )){
                 return i;
             }
         }
