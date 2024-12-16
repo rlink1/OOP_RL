@@ -45,15 +45,23 @@ public class As2_Team {
         }
 
         public void printPlayers(){
-        double totalM = 0;
             System.out.println( "\n\n" + this.nickname + "'s Players:");
                 for (int i = 0; i < this.allPlayers.size(); i++) {
                     System.out.println("\nName: " + this.allPlayers.get(i).getName() + ", Nickname: " + this.allPlayers.get(i).getPlayername() + ", Age: " + this.allPlayers.get(i).getAge() + ", Total Winnings: " + this.allPlayers.get(i).getWinnings());
-                    totalM = totalM + this.allPlayers.get(i).getWinnings();
                 }
-            System.out.println("\nTotal money: " + totalM);
 
         }
+
+    public void printPlayers2(){
+        double totalM = 0;
+        System.out.println( "\n\n" + this.nickname + "'s Players:");
+        for (int i = 0; i < this.allPlayers.size(); i++) {
+            System.out.println("\nName: " + this.allPlayers.get(i).getName() + ", Nickname: " + this.allPlayers.get(i).getPlayername() + ", Age: " + this.allPlayers.get(i).getAge() + ", Total Winnings: " + this.allPlayers.get(i).getWinnings());
+            totalM = totalM + this.allPlayers.get(i).getWinnings();
+        }
+        System.out.println("\nTotal money: " + totalM);
+
+    }
 
         public ArrayList<As3_Players> getPlayers(){
         return allPlayers;

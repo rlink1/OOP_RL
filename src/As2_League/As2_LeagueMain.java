@@ -78,9 +78,10 @@ public class As2_LeagueMain {
             System.out.println("3.  View age groups");
             System.out.println("4.  Sort by lowest winnings to highest");
             System.out.println("5.  Update Stats");
-            System.out.println("6.  Print Players");
-            System.out.println("7.  Update Players");
-            System.out.println("8.  Exit and Save");
+            System.out.println("6.  Choose Team Players");
+            System.out.println("7.  Print all players");
+            System.out.println("8.  Update Players");
+            System.out.println("9.  Exit and Save");
 
             int choice = Library.input.nextInt();
             Library.input.nextLine();
@@ -198,11 +199,24 @@ public class As2_LeagueMain {
 
 
             } else if (choice == 6) {
-                for (int i = 0; i < allTeams.size(); i++) {
-                    allTeams.get(i).printPlayers();
+                System.out.println("What team would you like to look up players by?");
+                String searchTerm = Library.input.nextLine();
+                int tempInt = searchByName(allTeams, searchTerm);
+                if(tempInt > -1){
+                    allTeams.get(tempInt).printPlayers();
+                }
+                else{
+                    System.out.println("Team not found, please try again.");
                 }
 
-            } else if (choice == 7) {
+            }  else if (choice == 7) {
+                for (int i = 0; i < allTeams.size(); i++) {
+                    allTeams.get(i).printPlayers2();
+                }
+
+        }
+
+            else if (choice == 8) {
 
                 System.out.println("Enter the nickname (username) of the player you would like to update stats for");
                 String searchFun = Library.input.nextLine();
