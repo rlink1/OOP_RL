@@ -218,62 +218,7 @@ public class As2_LeagueMain {
 
             else if (choice == 8) {
 
-                System.out.println("Enter the nickname (username) of the player you would like to update stats for");
-                String searchFun = Library.input.nextLine();
-                int foundIndex = -1;
-                int mainint = -1;
-                while(foundIndex == -1){
-
-                    for (int i = 0; i < allTeams.size(); i++) {
-                        foundIndex = searchByName1(allTeams.get(i).getPlayers(), searchFun);
-                        if(foundIndex > -1){
-                            mainint = i;
-                            break;
-                        }
-                    }
-                    break;
-
-                }
-                if(foundIndex > -1){
-
-                    System.out.println("Updating " + searchFun + ":\n");
-                    System.out.println("Did they change their real name?");
-                    String temp1 = Library.input.nextLine();
-                    if(temp1.startsWith("y")){
-                        System.out.println("What is their new name?");
-                        String tempName = Library.input.nextLine();
-                        allTeams.get(mainint).getPlayers().get(foundIndex).setName(tempName);
-                    }
-
-                    System.out.println("Did they change their username?");
-                    String temp2 = Library.input.nextLine();
-                    if(temp2.startsWith("y")){
-                        System.out.println("What is their new username??");
-                        String tempNick = Library.input.nextLine();
-                        allTeams.get(mainint).getPlayers().get(foundIndex).setPlayername(tempNick);
-                    }
-
-                    System.out.println("Would you like to change their age?");
-                    String temp3 = Library.input.nextLine();
-                    if(temp3.startsWith("y")){
-                        System.out.println("What is their new age??");
-                        int tempAge = Library.input.nextInt();
-                        Library.input.nextLine();
-                        allTeams.get(mainint).getPlayers().get(foundIndex).setAge(tempAge);
-                    }
-
-                    System.out.println("Did they win any more money?");
-                    String temp4 = Library.input.nextLine();
-                    if(temp4.startsWith("y")){
-                        System.out.println("How much money have they won?");
-                        double tempWins = Library.input.nextDouble();
-                        Library.input.nextLine();
-                        allTeams.get(mainint).getPlayers().get(foundIndex).addWinnings(tempWins);
-                    }
-
-                }else{
-                    System.out.println("Invalid player name. Please try again.");
-                }
+                As2_Team.updateStats(allTeams);
 
 
             } else {
